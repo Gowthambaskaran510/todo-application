@@ -59,7 +59,7 @@ const hasCategoryAndPriority = (requestQuery) => {
 };
 
 const hasSearchProperty = (requestQuery) => {
-  return requestQuery.search !== undefined;
+  return requestQuery.search_q !== undefined;
 };
 
 const hasCategoryProperty = (requestQuery) => {
@@ -261,7 +261,7 @@ app.get("/agenda/", async (request, response) => {
             
             WHERE 
              
-             due_date = "${newDate}";`;
+             due_date = "${newData}";`;
 
     const requestResult = await database.all(requestQuery);
     response.send(requestResult.map((eachItem) => outputResult(eachItem)));
